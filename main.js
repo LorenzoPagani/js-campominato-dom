@@ -5,28 +5,31 @@ const score = document.getElementById('score')
 let scoreCounter = []
 let randombox = []
 
-playBtn.addEventListener('click', function () {
-  if (difficultyToggler.value == 'easy') {
-    resetGrid()
-    resetScore()
-    resetBombs()
-    createGrid(100)
-    createBombs(100)
-  } else if (difficultyToggler.value == 'medium') {
-    resetGrid()
-    resetScore()
-    resetBombs()
-    createGrid(81)
-    createBombs(81)
-  } else if (difficultyToggler.value == 'hard') {
-    resetGrid()
-    resetScore()
-    resetBombs()
-    createGrid(49)
-    createBombs(49)
-  }
-})
+playGame()
 
+function playGame() {
+  playBtn.addEventListener('click', function () {
+    if (difficultyToggler.value == 'easy') {
+      resetGrid()
+      resetScore()
+      resetBombs()
+      createGrid(100)
+      createBombs(100)
+    } else if (difficultyToggler.value == 'medium') {
+      resetGrid()
+      resetScore()
+      resetBombs()
+      createGrid(81)
+      createBombs(81)
+    } else if (difficultyToggler.value == 'hard') {
+      resetGrid()
+      resetScore()
+      resetBombs()
+      createGrid(49)
+      createBombs(49)
+    }
+  })
+}
 function createGrid (cellnum) {
   for (let i = 1; i <= cellnum; i++) {
     let cell = generateSquare(i)
