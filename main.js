@@ -38,7 +38,7 @@ function eraseGrid () {
 function generateSquare (number) {
   const cell = document.createElement('div')
   cell.classList.add('square')
-  let gridSize;
+  let gridSize
   if (difficultyToggler.value == 'easy') {
     cell.classList.add('easy')
     gridSize = 100
@@ -66,9 +66,11 @@ function generateSquare (number) {
   return cell
 }
 function createBombs (maxNum) {
-  for (let i = 0; i < 16; i++) {
+  while(randombox.length < 16) {
     const random = getRndInteger(1, maxNum)
-    randombox.push(random)
+    if (!randombox.includes(random)) {
+        randombox.push(random)
+    }
   }
 }
 function resetBombs () {
@@ -81,3 +83,6 @@ function resetScore () {
 function getRndInteger (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
+
+
+/* stilizza vinto e perso */
