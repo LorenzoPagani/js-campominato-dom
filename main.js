@@ -38,15 +38,16 @@ function eraseGrid () {
 function generateSquare (number) {
   const cell = document.createElement('div')
   cell.classList.add('square')
+  let gridSize;
   if (difficultyToggler.value == 'easy') {
     cell.classList.add('easy')
-    const maxscore = 100
+    gridSize = 100
   } else if (difficultyToggler.value == 'medium') {
     cell.classList.add('medium')
-    const maxscore = 81
+    gridSize = 81
   } else if (difficultyToggler.value == 'hard') {
     cell.classList.add('hard')
-    const maxscore = 49
+    gridSize = 49
   }
   cell.innerHTML = number
   cell.addEventListener('click', function () {
@@ -58,7 +59,7 @@ function generateSquare (number) {
       score.innerHTML = `SCORE: ${scoreCounter.length}`
       cell.classList.add('highlight')
     }
-    if (scoreCounter.length == maxscore - randombox.length) {
+    if (scoreCounter.length == gridSize - randombox.length) {
       grid.innerHTML = 'hai Vinto!!!'
     }
   })
