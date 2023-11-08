@@ -7,32 +7,33 @@ let randombox = []
 
 playBtn.addEventListener('click', function () {
   if (difficultyToggler.value == 'easy') {
-    eraseGrid()
+    resetGrid()
     resetScore()
-    generateGrid(100)
     resetBombs()
+    createGrid(100)
     createBombs(100)
   } else if (difficultyToggler.value == 'medium') {
-    eraseGrid()
+    resetGrid()
     resetScore()
-    generateGrid(81)
     resetBombs()
+    createGrid(81)
     createBombs(81)
   } else if (difficultyToggler.value == 'hard') {
-    eraseGrid()
+    resetGrid()
     resetScore()
-    generateGrid(49)
     resetBombs()
+    createGrid(49)
     createBombs(49)
   }
 })
-function generateGrid (cellnum) {
+
+function createGrid (cellnum) {
   for (let i = 1; i <= cellnum; i++) {
     let cell = generateSquare(i)
     grid.appendChild(cell)
   }
 }
-function eraseGrid () {
+function resetGrid () {
   grid.innerHTML = ''
 }
 function generateSquare (number) {
@@ -53,23 +54,26 @@ function generateSquare (number) {
   cell.addEventListener('click', function () {
     if (randombox.includes(number)) {
       cell.classList.add('bomba')
-      grid.innerHTML = 'hai perso'
+      grid.innerHTML = `<video src="Metal gameOver.mp4" autoplay><source src="Metal gameOver.mp4" ></video>`
     } else if (!scoreCounter.includes(number)) {
       scoreCounter.push(number)
       score.innerHTML = `SCORE: ${scoreCounter.length}`
       cell.classList.add('highlight')
     }
     if (scoreCounter.length == gridSize - randombox.length) {
-      grid.innerHTML = 'hai Vinto!!!'
+      const winSound = document.getElementById('winSound')
+      winSound.play()
+      grid.innerHTML = `<img 
+        src="https://i.pinimg.com/originals/69/d7/21/69d72110207a680dafb3f4c3f3bd1238.gif"alt>`
     }
   })
   return cell
 }
 function createBombs (maxNum) {
-  while(randombox.length < 16) {
+  while (randombox.length < 16) {
     const random = getRndInteger(1, maxNum)
     if (!randombox.includes(random)) {
-        randombox.push(random)
+      randombox.push(random)
     }
   }
 }
@@ -83,6 +87,3 @@ function resetScore () {
 function getRndInteger (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
-
-
-/* stilizza vinto e perso */

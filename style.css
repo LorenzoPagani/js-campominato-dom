@@ -1,12 +1,21 @@
-
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
     font-family: sans-serif;
 }
+
+.d-none {
+    display: none;
+}
+
 body {
     background-image: url(https://campo-minato.com/media/cover.png);
+}
+
+img,
+video {
+    width: 100%;
 }
 
 header {
@@ -29,7 +38,6 @@ header {
     border: 1px solid black;
     border-radius: 10px;
     color: aliceblue;
-
 }
 
 .wrapper {
@@ -42,13 +50,11 @@ header {
 #grid {
     display: flex;
     flex-wrap: wrap;
-   
-    height: 80vh;
     width: 80vh;
+    aspect-ratio: 1;
     padding: 30px;
     background-color: #BDBDBD;
     border: 10px outset black;
-    
 }
 
 .square {
@@ -59,18 +65,19 @@ header {
 }
 
 .easy {
-    height: calc(100% / 10 );
-    width: calc(100% / 10 );
-}
-.medium {
-    height: calc(100% / 9 );
-    width: calc(100% / 9 );
-}
-.hard {
-    height: calc(100% / 7 );
-    width: calc(100% / 7 );
+    height: calc(100% / 10);
+    width: calc(100% / 10);
 }
 
+.medium {
+    height: calc(100% / 9);
+    width: calc(100% / 9);
+}
+
+.hard {
+    height: calc(100% / 7);
+    width: calc(100% / 7);
+}
 
 
 .highlight {
