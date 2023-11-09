@@ -7,34 +7,10 @@ function playGame() {
   let scoreCounter = []
   let randombox = []
   playBtn.addEventListener('click', function () {
-    let gridSize;
+    let gridSize = getGridSize()
     resetGrid()
     resetScore()
     resetBombs()
-    if (difficultyToggler.value == 'easy') {
-      gridSize = 100;
-    } else if (difficultyToggler.value == 'medium') {
-      gridSize = 81;
-    } else if (difficultyToggler.value == 'hard') {
-      gridSize = 49;
-    }
-    createGrid(gridSize)
-    createBombs(gridSize)
-  })
-}
-function playGame() {
-  playBtn.addEventListener('click', function () {
-    let gridSize;
-    resetGrid()
-    resetScore()
-    resetBombs()
-    if (difficultyToggler.value == 'easy') {
-      gridSize = 100;
-    } else if (difficultyToggler.value == 'medium') {
-      gridSize = 81;
-    } else if (difficultyToggler.value == 'hard') {
-      gridSize = 49;
-    }
     createGrid(gridSize)
     createBombs(gridSize)
   })
