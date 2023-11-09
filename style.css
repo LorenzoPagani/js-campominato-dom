@@ -1,12 +1,9 @@
+/* Stili di base */
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
     font-family: sans-serif;
-}
-
-.d-none {
-    display: none;
 }
 
 body {
@@ -18,6 +15,7 @@ video {
     width: 100%;
 }
 
+/* Stili dell'intestazione */
 header {
     display: flex;
     justify-content: space-between;
@@ -25,6 +23,7 @@ header {
     background-color: darkslategray;
 }
 
+/* Stili del box di input */
 #input-box {
     display: flex;
     justify-content: center;
@@ -40,6 +39,7 @@ header {
     color: aliceblue;
 }
 
+/* Stili del wrapper */
 .wrapper {
     display: flex;
     justify-content: center;
@@ -47,6 +47,7 @@ header {
     height: 85vh;
 }
 
+/* Stili della griglia */
 #grid {
     display: flex;
     flex-wrap: wrap;
@@ -64,6 +65,7 @@ header {
     align-items: center;
 }
 
+/* Stili di difficoltà */
 .easy {
     height: calc(100% / 10);
     width: calc(100% / 10);
@@ -79,7 +81,7 @@ header {
     width: calc(100% / 7);
 }
 
-
+/* Stili di evidenziazione e bomba */
 .highlight {
     background: darkslategray;
 }
