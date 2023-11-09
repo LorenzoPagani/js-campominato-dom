@@ -2,32 +2,41 @@ let grid = document.getElementById('grid')
 const playBtn = document.getElementById('playGame')
 const difficultyToggler = document.getElementById('difficulty')
 const score = document.getElementById('score')
-let scoreCounter = []
-let randombox = []
-
 playGame()
-
+function playGame() {
+  let scoreCounter = []
+  let randombox = []
+  playBtn.addEventListener('click', function () {
+    let gridSize;
+    resetGrid()
+    resetScore()
+    resetBombs()
+    if (difficultyToggler.value == 'easy') {
+      gridSize = 100;
+    } else if (difficultyToggler.value == 'medium') {
+      gridSize = 81;
+    } else if (difficultyToggler.value == 'hard') {
+      gridSize = 49;
+    }
+    createGrid(gridSize)
+    createBombs(gridSize)
+  })
+}
 function playGame() {
   playBtn.addEventListener('click', function () {
+    let gridSize;
+    resetGrid()
+    resetScore()
+    resetBombs()
     if (difficultyToggler.value == 'easy') {
-      resetGrid()
-      resetScore()
-      resetBombs()
-      createGrid(100)
-      createBombs(100)
+      gridSize = 100;
     } else if (difficultyToggler.value == 'medium') {
-      resetGrid()
-      resetScore()
-      resetBombs()
-      createGrid(81)
-      createBombs(81)
+      gridSize = 81;
     } else if (difficultyToggler.value == 'hard') {
-      resetGrid()
-      resetScore()
-      resetBombs()
-      createGrid(49)
-      createBombs(49)
+      gridSize = 49;
     }
+    createGrid(gridSize)
+    createBombs(gridSize)
   })
 }
 function createGrid (cellnum) {
@@ -42,17 +51,8 @@ function resetGrid () {
 function generateSquare (number) {
   const cell = document.createElement('div')
   cell.classList.add('square')
-  let gridSize
-  if (difficultyToggler.value == 'easy') {
-    cell.classList.add('easy')
-    gridSize = 100
-  } else if (difficultyToggler.value == 'medium') {
-    cell.classList.add('medium')
-    gridSize = 81
-  } else if (difficultyToggler.value == 'hard') {
-    cell.classList.add('hard')
-    gridSize = 49
-  }
+  cell.classList.add(difficultyToggler.value)
+  let gridSize = getGridSize();
   cell.innerHTML = number
   cell.addEventListener('click', function () {
     if (randombox.includes(number)) {
@@ -89,4 +89,13 @@ function resetScore () {
 }
 function getRndInteger (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min
+}
+function getGridSize() {
+  if (difficultyToggler.value == 'easy') {
+    return 100;
+  } else if (difficultyToggler.value == 'medium') {
+    return 81;
+  } else if (difficultyToggler.value == 'hard') {
+    return 49;
+  }
 }
